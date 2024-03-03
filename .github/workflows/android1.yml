@@ -34,6 +34,23 @@ jobs:
     #   run: chmod +x gradlew
     # - name: Build with Gradle
     #   run: ./gradlew build
+    
+    - name: Sign Android
+      # You may pin to the exact commit or the version.
+      # uses: noriban/sign-android-release@5f144321d3c7c2233266e78b42360345d8bbe403
+      uses: noriban/sign-android-release@v5.1
+      with:
+        # The directory to find your release to sign
+        releaseDirectory:  ${{ github.workspace }}
+          # The key used to sign your release in base64 encoded format
+        signingKeyBase64: 1
+          # The key alias
+        alias: 1
+          # The password to the keystore
+        keyStorePassword: 1
+          # The password for the key
+        keyPassword: 1
+    
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
